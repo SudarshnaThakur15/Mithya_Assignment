@@ -42,7 +42,8 @@ const UserSchema = new Schema({
 });
 
 const Activity = model('Activity', ActivitySchema);
-
+const User = model('User', UserSchema);
+export default User;
 
 
 

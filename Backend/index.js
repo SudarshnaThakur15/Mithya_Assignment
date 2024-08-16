@@ -3,7 +3,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './DB/connection.js';
 import hotelRoutes from './Routes/hotel.routes.js';
-
+import user from './DB/Models/user.model.js';
+import userroutes from './Routes/user.routes.js';
 dotenv.config();
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(json());
 
 // Routes
 app.use('/api/hotels', hotelRoutes);
+app.use('/api/users', userroutes);
 
 // Connect to the database
 connectDB().then(() => {

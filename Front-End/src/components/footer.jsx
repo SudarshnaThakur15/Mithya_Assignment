@@ -19,7 +19,7 @@ const Footer = () => {
         </a>
       </div>
       <div className="text-center text-sm">
-        &copy; 2024 Your Company Name. All rights reserved.
+        &copy; 2024 Book-Your-Room. All rights reserved.
       </div>
     </footer>
   );
