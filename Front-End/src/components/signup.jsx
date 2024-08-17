@@ -88,8 +88,8 @@ function Signup() {
             <button
               type="submit"
               className="px-6 py-2 bg-purple-700 text-white rounded-full hover:bg-purple-800 focus:outline-none"
-              disabled={password !== confirmPassword || !password}
-            >
+              disabled={(password !== confirmPassword) || !password || !confirmPassword|| !email || !username}
+            > 
               Signup
             </button>
           </div>

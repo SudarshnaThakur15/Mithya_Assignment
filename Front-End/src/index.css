@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* .grid-container {
+    display: flex;
+    justify-content: space-between;
+} */

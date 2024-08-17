@@ -3,6 +3,13 @@ import { NavLink } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import "../index.css";
 function Navbar() {
+  const[user, setUser] = React.useState(null);
+  React.useEffect(() => {
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      setUser(userId);
+    }
+  }, []);
   return (
     <nav className="bg-gray-800 text-white shadow-md">
       <div className="max-w-7xl mx-auto px-8 sm:px-6 lg:px-10">
@@ -20,22 +27,36 @@ function Navbar() {
               >
                 Home
               </NavLink>
-              <NavLink 
+              {(user==null)?<NavLink 
                 to="/login"
                 className={({ isActive }) => 
                   `px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 
                   ${isActive ? 'bg-red-200 text-orange-600' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`}
               >
                 Login 
-              </NavLink>
-              <NavLink 
+              </NavLink>:<NavLink 
+                to="/profile"
+                className={({ isActive }) => 
+                  `px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 
+                  ${isActive ? 'bg-red-200 text-orange-600' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`}
+              >
+                Profile
+              </NavLink>}
+              {(user==null)?<NavLink 
                 to="/signup"
                 className={({ isActive }) => 
                   `px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 
                   ${isActive ? 'bg-red-200 text-orange-600' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`}
               >
                 Sign-up
-              </NavLink>
+              </NavLink>:<NavLink 
+                to="/logout"
+                className={({ isActive }) => 
+                  `px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 
+                  ${isActive ? 'bg-red-200 text-orange-600' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`}
+              >
+                Logout
+              </NavLink>}
 
               
             </div>

@@ -5,6 +5,8 @@ import connectDB from './DB/connection.js';
 import hotelRoutes from './Routes/hotel.routes.js';
 import user from './DB/Models/user.model.js';
 import userroutes from './Routes/user.routes.js';
+import booking from './DB/Models/roomBooking.model.js';
+import Hotel from './DB/Models/hotel.model.js';
 dotenv.config();
 
 const app = express();

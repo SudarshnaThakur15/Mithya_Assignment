@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 const BookingSchema = new mongoose.Schema({
     userId: mongoose.Schema.Types.ObjectId,
     hotelId: mongoose.Schema.Types.ObjectId,

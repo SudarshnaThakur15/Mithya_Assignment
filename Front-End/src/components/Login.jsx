@@ -1,6 +1,26 @@
 import React from 'react';
 import keys from '../assets/keys.png';
+import { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const apiUrl = import.meta.env.VITE_API_URL;
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(`${apiUrl}/api/users/login`, { email, password });
+      console.log(response.data);
+      localStorage.setItem('userId', response.data.user._id);
+      navigate('/')
+    } catch (error) {
+      console.error('Error:', error);
+      alert(error.response?.data?.message || 'An error occurred');
+    }
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 bg-black">
       <div className="w-96 bg-pink-200 p-6 rounded-lg shadow-lg">
@@ -20,17 +40,19 @@ function Login() {
               id="email"
               className="w-full px-3 py-2 bg-gray-100 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500"
               placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
                    <div className="mb-4">
             <label className="block text-black mb-2" htmlFor="password">
-              Create Password
+               Password
             </label>
             <input
               type="password"
               id="password"
               className="w-full px-3 py-2 bg-gray-100 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500"
               placeholder="Create Password"
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           
@@ -38,6 +60,7 @@ function Login() {
             <button
               type="submit"
               className="px-6 py-2 bg-purple-700 text-white rounded-full hover:bg-purple-800 focus:outline-none"
+              onClick={handleSubmit}
             >
               Login 
             </button>

@@ -30,12 +30,14 @@ function Home() {
         hotels.map((hotel, index) => (
           <div key={index} style={{ width: '30%', marginBottom: '20px', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)' }}>
             <HotelCard
+              id={hotel._id}
               image={hotel.images[0]}
               name={hotel.name}
               location={hotel.location}
               description={hotel.description}
               pricerange={hotel.price_range}
               rating={hotel.rating}
+              hotel={hotel}
             />
           </div>
         ))
